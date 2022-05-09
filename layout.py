@@ -2,12 +2,10 @@ import dash
 import base64
 import io
 import pandas as pd
-from dash import Dash, html, dcc, dash_table
+from dash import Dash, html, dcc
 from dash.dependencies import Input, Output, State
-import plotly.express as px
 import style as stl
 import sample_chart as sc
-import fileReading as fr
 import dropDown as dd
 
 
@@ -279,7 +277,7 @@ def update_chart(btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10,btn11) :
         html.P('Y : ', style=stl.xyzStyle),
         dcc.Dropdown(options=[], id='dropdown2', style=stl.dropDownStyle),
         html.P('Z : ', style=stl.xyzStyle),
-        dcc.Dropdown(options=[], id='dropdown3', style=stopDownStyle),
+        dcc.Dropdown(options=[], id='dropdown3', style=stl.dropDownStyle),
     ]
 
 
@@ -294,7 +292,7 @@ def update_chart(btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10,btn11) :
     ]
     children3D = [
         html.P('X : ', style=stl.xyzStyle),
-        dcc.Dropdown(options=dd.give_list(help.getFill.dre()), id='dropdown1', style=stl.dropDownStyle),
+        dcc.Dropdown(options=dd.give_list(help.getFile()), id='dropdown1', style=stl.dropDownStyle),
         html.P('Y : ', style=stl.xyzStyle),
         dcc.Dropdown(options=dd.give_list(help.getFile()), id='dropdown2', style=stl.dropDownStyle),
         html.P('Z : ', style=stl.xyzStyle),
