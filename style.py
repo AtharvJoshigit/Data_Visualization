@@ -51,8 +51,8 @@ sgraph_btn = {
     'margin': '30px',
     'background' : 'RGB(15,40,48)',
     'borderWidth': '2px',
-    'borderColor':'powderBlue',
-    'borderStyle': 'groove',
+    'borderColor':'black',
+    'borderStyle': 'solid',
 }
 
 chart_update_style={

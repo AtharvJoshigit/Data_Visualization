@@ -278,7 +278,7 @@ def update_chart(btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10,btn11) :
 
     children1D = [
         html.P('X : ', style=stl.xyzStyle),
-        dcc.Dropdown(options=dd.give_list(help.getFile()), value='x', id='dropdown1', style=stl.dropDownStyle),
+        dcc.Dropdown(options=dd.give_list(help.getFile()), id='dropdown1', style=stl.dropDownStyle),
         html.P('Y : ', style=stl.xyzStyle),
         dcc.Dropdown(options=[], id='dropdown2', style=stl.dropDownStyle),
         html.P('Z : ', style=stl.xyzStyle),
@@ -357,13 +357,13 @@ def update_chart(btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10,btn11) :
         children1 = [
             dcc.Graph(figure=sc.histogramChart(sc.df, 400, 400,'x','y')),
         ]
-        return children1, children2D, [] ,
+        return children1, children2D, []
     elif 'pie' in button_id :
         help.setButtonValue(9)
         children1 = [
             dcc.Graph(figure=sc.pieChart(sc.df, 400, 400,'y')),
         ]
-        return children1, children1D,[],
+        return children1, children3D,[],
 
     elif 'scatter3D' in button_id :
         help.setButtonValue(10)
