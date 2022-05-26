@@ -2,7 +2,7 @@ import dash
 import base64
 import io
 import pandas as pd
-from dash import Dash, html, dcc
+from dash import Dash, html, dcc, dash_table
 from dash.dependencies import Input, Output, State
 import style as stl
 import sample_chart as sc
@@ -184,7 +184,9 @@ app.layout = html.Div(children=[
         html.Br(),
         html.Br(),
         "Tribe - H"
-    ]),
+    ],
+    style={'color': 'RGB(164, 168, 176)'},),
+    html.Div(id='dataTale'),
 ],
 style=stl.layout_style
 )
@@ -207,12 +209,12 @@ def upload_data(contents, filename):
     if contents is not None :
         df = parse_data(contents, filename)
         if help.getFile() is None :
-            return ['error in file format, please choose csv,txt or excel file format'], dash.no_update;
+            return html.H4(['error in file format, please choose csv,txt or excel file format']), dash.no_update;
         row, col = df.shape
         children = [
             'File Name : ' + filename,
             html.Br(),
-            'NUmber of Rows : ' + str(row),
+            'Number of Rows : ' + str(row),
             html.Br(),
             'Number of Columns : ' + str(col),
             html.Br(),
@@ -220,7 +222,7 @@ def upload_data(contents, filename):
 
 
 
-        return ['File is Uploaded'],children
+        return html.H4(['File is Uploaded']),children
 
 
 
@@ -252,6 +254,7 @@ def parse_data(contents, filename):
 @app.callback(Output('chart_update','children'),
               Output('dropDown','children'),
               Output('data_print','children'),
+              Output('dataTale','children'),
               # Output('buttonSection','children'),
               Input('btn_bar','n_clicks'),
               Input('btn_line','n_clicks'),
@@ -270,7 +273,7 @@ def update_chart(btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10,btn11) :
     button_id = ctx.triggered[0]['prop_id'].split('.')[0]
 
     if help.getFile() is None :
-        return ['File is not Uploaded'], dash.no_update,dash.no_update
+        return html.H4(['File is not Uploaded']), dash.no_update,dash.no_update,dash.no_update
 
     # btn = [
     #     html.Button(['Generate'], id='button', style=stl.next_btn_style)
@@ -304,6 +307,8 @@ def update_chart(btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10,btn11) :
         dcc.Dropdown(options=dd.give_list(help.getFile()), id='dropdown3', style=stl.dropDownStyle),
     ]
 
+    table = dash_table.DataTable(style_data = {'background':'RGB(164, 168, 176)'}, data =help.getFile().to_dict('records'), columns = [{"name": i, "id": i} for i in help.getFile().columns])
+
 
 
     if 'btn_bar' in button_id :
@@ -311,73 +316,73 @@ def update_chart(btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10,btn11) :
         children1=[
             dcc.Graph(figure=sc.barChart(sc.df,400,400,'x','y')),
             ]
-        return children1,children2D, [],
+        return children1,children2D, [], table
     elif 'btn_line' in button_id :
         help.setButtonValue(2)
         children1 = [
             dcc.Graph(figure=sc.lineChart(sc.df, 400, 400,'x','y')),
         ]
-        return children1, children2D, [],
+        return children1, children2D, [],table
     elif 'btn_area' in button_id :
         help.setButtonValue(3)
         children1 = [
             dcc.Graph(figure=sc.areaChart(sc.df, 400, 400,'x','y')),
         ]
-        return children1, children2D, [],
+        return children1, children2D, [],table
     elif 'btn_box' in button_id :
         help.setButtonValue(4)
         children1 = [
             dcc.Graph(figure=sc.boxChart(sc.df, 400, 400,'x','y')),
 
         ]
-        return children1, children2D, [],
+        return children1, children2D, [],table
     elif 'btn_funnel' in button_id :
         help.setButtonValue(5)
         children1 = [
             dcc.Graph(figure=sc.funnelChart(sc.df, 400, 400,'x','y')),
 
         ]
-        return children1, children2D, [],
+        return children1, children2D, [],table
     elif 'btn_scatter' in button_id :
         help.setButtonValue(6)
         children1 = [
             dcc.Graph(figure=sc.scatterChart(sc.df,400, 400,'x','y')),
         ]
-        return children1, children2D, [],
+        return children1, children2D, [],table
 
     elif 'line3D' in button_id :
         help.setButtonValue(7)
         children1 = [
             dcc.Graph(figure=sc.line3DChart(sc.df,400, 400,'x','y','z')),
         ]
-        return children1, children3D, [],
+        return children1, children3D, [],table
 
     elif 'histogram' in button_id :
         help.setButtonValue(8)
         children1 = [
             dcc.Graph(figure=sc.histogramChart(sc.df, 400, 400,'x','y')),
         ]
-        return children1, children2D, []
+        return children1, children2D, [], table
     elif 'pie' in button_id :
         help.setButtonValue(9)
         children1 = [
             dcc.Graph(figure=sc.pieChart(sc.df, 400, 400,'y')),
         ]
-        return children1, children3D,[],
+        return children1, children3D,[], table
 
     elif 'scatter3D' in button_id :
         help.setButtonValue(10)
         children1 = [
             dcc.Graph(figure=sc.scatter3DChart(sc.df, 400, 400,'x','y','z')),
         ]
-        return children1, children3D,[],
+        return children1, children3D,[], table
 
     elif 'heatmap' in button_id :
         help.setButtonValue(11)
         children1 = [
             dcc.Graph(figure=sc.heatmapChart(sc.df,400, 400,'x','y','z')),
         ]
-        return children1, children3D, [],
+        return children1, children3D, [],table
 
 
 
