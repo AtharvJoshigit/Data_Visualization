@@ -191,29 +191,7 @@ style=stl.layout_style
 
 
 
-def parse_data(contents, filename):
-    content_type, content_string = contents.split(',')
 
-    decoded = base64.b64decode(content_string)
-    try:
-        if 'csv' in filename:
-            # Assume that the user uploaded a CSV or TXT file
-            df = pd.read_csv(
-                io.StringIO(decoded.decode('utf-8')))
-        elif 'xls' in filename:
-            # Assume that the user uploaded an excel file
-            df = pd.read_excel(io.BytesIO(decoded))
-        elif 'txt' or 'tsv' in filename:
-            df = pd.read_csv(
-                io.StringIO(decoded.decode('utf-8')), delimiter = r'\s+')
-    except Exception as e:
-        print(e)
-        return html.Div([
-            'There was an error processing this file.'
-        ])
-    help.setFile(df)
-
-    return df
 
 
 
@@ -228,6 +206,8 @@ def parse_data(contents, filename):
 def upload_data(contents, filename):
     if contents is not None :
         df = parse_data(contents, filename)
+        if help.getFile() is None :
+            return ['error in file format, please choose csv,txt or excel file format'], dash.no_update;
         row, col = df.shape
         children = [
             'File Name : ' + filename,
@@ -240,7 +220,32 @@ def upload_data(contents, filename):
 
 
 
-        return ['File is Uploaded'],children,
+        return ['File is Uploaded'],children
+
+
+
+def parse_data(contents, filename):
+    content_type, content_string = contents.split(',')
+
+    decoded = base64.b64decode(content_string)
+    df = None
+    try:
+        if 'csv' in filename:
+            # Assume that the user uploaded a CSV or TXT file
+            df = pd.read_csv(
+                io.StringIO(decoded.decode('utf-8')))
+        elif 'xls' in filename:
+            # Assume that the user uploaded an excel file
+            df = pd.read_excel(io.BytesIO(decoded))
+        elif 'txt' or 'tsv' in filename:
+            df = pd.read_csv(
+                io.StringIO(decoded.decode('utf-8')), delimiter = r'\s+')
+
+    except Exception as e:
+        print(e)
+    help.setFile(df)
+
+    return df
 
 
 

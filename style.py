@@ -4,8 +4,8 @@ layout_style = {
     'height': '',
     'width': 'auto',
     # 'backgroundColor': 'RGB(168,247,226)'
-    'background': 'black',
-    'fontColor' : 'white'
+    'background': 'RGB(15,40,48)',
+    'fontColor' : 'black'
 }
 uploader_style = {
     'width': '100%',
@@ -41,7 +41,7 @@ sample_chart_style = {
 graph_ex_style= {
     'width':'10%',
     'height': 'auto',
-    'backgroundColor': 'RGB(168,247,226)',
+    'backgroundColor': 'RGB(15,40,48)',
     'layout': 'false'
 
 }
@@ -49,8 +49,10 @@ graph_ex_style= {
 sgraph_btn = {
     'border': 'none',
     'margin': '30px',
-    # 'backgroundColor' : 'RGB(168,247,226)'
-    'background' : 'black'
+    'background' : 'RGB(15,40,48)',
+    'borderWidth': '2px',
+    'borderColor':'powderBlue',
+    'borderStyle': 'groove',
 }
 
 chart_update_style={
@@ -63,7 +65,7 @@ chart_update_style={
 
 next_btn_style ={
     'backgroundColor': 'lightBlue',
-    'color': 'black',
+    'color': 'RGB(15,40,48)',
     'borderColor': 'white',
     'padding': '7px',
     'borderRadius' : '6px',
@@ -73,19 +75,19 @@ next_btn_style ={
 show_data_style = {
     'frontSize' : '17px',
     'textAlign' : 'center',
-    'color' : 'RGB(129,133,159)',
+    'color' : 'white',
 }
 
 dropDownStyle = {
-    'background': 'black',
-    'color': 'black',
+    'background': 'RGB(15,40,48)',
+    # 'color': 'black',
     'width': '330px',
     'height': 'auto',
 }
 
 dropDownDivStyle = {
-    'background': 'black',
-    'color': 'white',
+    'background': 'RGB(15,40,48)',
+    'color': 'black',
     'display': 'flex',
     'justifyContent': 'center',
     'marginTop': '30px',
@@ -97,7 +99,7 @@ xyzStyle = {
 }
 
 btnStyle = {
-    'background' : 'black',
+    'background' : 'RGB(15,40,48)',
     'marginLeft' : '50%',
     'marginTop' : '20px',
 }
