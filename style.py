@@ -4,7 +4,7 @@ layout_style = {
     'height': '',
     'width': 'auto',
     # 'backgroundColor': 'RGB(168,247,226)'
-    'background': 'black',
+    'background': 'RGB(15,40,48)',
     'fontColor' : 'black'
 }
 uploader_style = {
@@ -50,9 +50,9 @@ sgraph_btn = {
     'border': 'none',
     'margin': '30px',
     'background' : 'RGB(15,40,48)',
-    'borderWidth': '2px',
-    'borderColor':'black',
-    'borderStyle': 'solid',
+    # 'borderWidth': '2px',
+    # 'borderColor':'black',
+    # 'borderStyle': 'solid',
 }
 
 chart_update_style={
