@@ -3,9 +3,8 @@
 layout_style = {
     'height': '',
     'width': 'auto',
-    # 'backgroundColor': 'RGB(168,247,226)'
-    'background': 'black',
-    'fontColor' : 'white'
+    'background': 'RGB(164, 168, 176)',
+    'fontColor' : 'black'
 }
 uploader_style = {
     'width': '100%',
@@ -20,7 +19,7 @@ uploader_style = {
     'marginRight': 'auto',
     'marginTop': '50px',
     'color' : 'RGB(47,70,173)',
-    'borderColor': 'white'
+    'borderColor': 'black'
 }
 
 h1_style = {
@@ -41,7 +40,7 @@ sample_chart_style = {
 graph_ex_style= {
     'width':'10%',
     'height': 'auto',
-    'backgroundColor': 'RGB(168,247,226)',
+    'backgroundColor': 'RGB(15,40,48)',
     'layout': 'false'
 
 }
@@ -49,22 +48,24 @@ graph_ex_style= {
 sgraph_btn = {
     'border': 'none',
     'margin': '30px',
-    # 'backgroundColor' : 'RGB(168,247,226)'
-    'background' : 'black'
+    'background': 'RGB(164, 168, 176)',
+    'borderWidth': '2px',
+    'borderColor':'pink',
+    'borderStyle': 'solid',
 }
 
 chart_update_style={
     'padding': '20px',
     'display': 'flex',
     'justifyContent': 'center',
-    'color': 'white'
+    'color': 'black'
 
 }
 
 next_btn_style ={
     'backgroundColor': 'lightBlue',
-    'color': 'black',
-    'borderColor': 'white',
+    'color': 'RGB(207, 197, 174)',
+    'borderColor': '',
     'padding': '7px',
     'borderRadius' : '6px',
 
@@ -73,19 +74,19 @@ next_btn_style ={
 show_data_style = {
     'frontSize' : '17px',
     'textAlign' : 'center',
-    'color' : 'RGB(129,133,159)',
+    'color' : 'black',
 }
 
 dropDownStyle = {
-    'background': 'black',
+    'background': 'RGB(164, 168, 176)',
     'color': 'black',
     'width': '330px',
     'height': 'auto',
 }
 
 dropDownDivStyle = {
-    'background': 'black',
-    'color': 'white',
+    'background': 'RGB(164, 168, 176)',
+    'color': 'black ',
     'display': 'flex',
     'justifyContent': 'center',
     'marginTop': '30px',
@@ -97,7 +98,7 @@ xyzStyle = {
 }
 
 btnStyle = {
-    'background' : 'black',
+    'background' : 'RGB(15,40,48)',
     'marginLeft' : '50%',
     'marginTop' : '20px',
 }
