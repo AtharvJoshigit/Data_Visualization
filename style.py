@@ -1,7 +1,7 @@
 
 
 layout_style = {
-    'height': '',
+    'height': '100%',
     'width': 'auto',
     'background': 'RGB(164, 168, 176)',
     'fontColor' : 'black'
