@@ -37,10 +37,12 @@ app = Dash()
 
 
 # app layout
-app.layout = html.Div(id="frontPage", children=[
+app.layout = html.Div( children=[
     html.Div(children=[html.H1("Data Visualizer")], style=stl.frontPageStyle),
     ],
-    style=stl.layout_style),
+    dcc.Dropdown(children=[1,2,3,3,4,5]),
+    style=stl.layout_style
+),
 
 
 
