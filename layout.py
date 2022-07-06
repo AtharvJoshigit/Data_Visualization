@@ -37,7 +37,18 @@ app = Dash()
 
 
 # app layout
-app.layout = html.Div(children=[
+app.layout = html.Div(id="frontPage", children=[
+    html.Div(children=[html.H1("Data Visualizer")], style=stl.frontPageStyle),
+    ],
+    style=stl.layout_style),
+
+
+
+
+layoutAfterFront=[
+    # html.Div(id="frontPage", style=stl.frontPageStyle, children =[
+    #     html.H1("Data visualizer"),
+    # ]),
     html.H1('Open Source Data Visualization',
             style=stl.h1_style),
     html.Div(id='result',style=stl.show_data_style),
@@ -50,8 +61,8 @@ app.layout = html.Div(children=[
                 id= "file_uploaded",
                 children=[
                     html.Div([
-                        "Drag and Drop or ",
-                        html.A('Select File')
+                        # "Drag and Drop or ",
+                        html.Button('Select File')
                     ])
                 ],
                 style=stl.uploader_style,
@@ -188,8 +199,8 @@ app.layout = html.Div(children=[
     style={'color': 'RGB(164, 168, 176)'},),
     html.Div(id='dataTale'),
 ],
-style=stl.layout_style
-)
+
+
 
 
 

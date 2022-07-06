@@ -7,12 +7,12 @@ layout_style = {
     'fontColor' : 'black'
 }
 uploader_style = {
-    'width': '100%',
-    'height': '90px',
+    'width': '270px',
+    'height': '200px',
     'fontSize': '24px',
     'borderWidth': '1px',
     'borderStyle': 'dashed',
-    'borderRadius': '15px',
+    'borderRadius': '90px',
     'textAlign': 'center',
     'lineHeight': '90px',
     'marginLeft': '0%',
@@ -108,4 +108,10 @@ finalChartStyle = {
     'justifyContent':'center',
     # 'borderColor': 'RGB(43,43,41)',
     # 'borderWidth':'12px'
+}
+
+frontPageStyle = {
+    'height':'100vh',
+    'width': 'auto',
+    'background-image': 'URL(bgImage.jpg)',
 }
