@@ -35,173 +35,43 @@ help = Help()
 app = Dash()
 
 
+app.layout = html.Div(id = 'main',children=[
+    html.Div(id="HeadLine", style=stl.headLineStyle,children=[
+        html.H1('Data Visualizer',style=stl.h1_style),
 
-app.layout = html.Div(children=[
-html.H1('Data Visualizer',style=stl.h1_style),
-    html.Button(id="frontButton", children=[html.H1("next")],n_clicks='0',style=stl.next_btn_style),
-    html.Div(id="abc", style=stl.layout_style),
+    ],
+),
+
+
+    html.Div(
+        id = "frontPageDetails",
+        children=[
+            html.H1( children = ["Welcome!"],style=stl.welcomeStyle),
+            html.H1(children=['Data Visualization?'],style=stl.whatisStyle),
+            html.P(  children = ['        Data visualization is the representation of data through use of ',
+            html.Br(),
+            'common graphicssuch as charts, plots, infographics, and even animations. ',
+            html.Br(),
+            'These visual displays of information communicate complex data',
+            html.Br(),
+            ' relationships and data-driven insights in a way that is easy to understand.'],style= stl.ansStyle),
+            # html.P(children=[
+            #     'Go Next to Visualize Data'
+            # ],style=stl.goNextStyle),
+        ],
+    ),
+    html.Button(id="frontButton", children=["Visualize Data >>"],n_clicks='0',style=stl.next_btn_style),
+
+
+    html.Div(id="abc", style=stl.layout_style2),
     ],
     style=stl.layout_style
 )
-# app layout
 
 
 
 
-# layoutAfterFront=[
-#     # html.Div(id="frontPage", style=stl.frontPageStyle, children =[
-#     #     html.H1("Data visualizer"),
-#     # ]),
-#     html.H1('Open Source Data Visualization',
-#             style=stl.h1_style),
-#     html.Div(id='result',style=stl.show_data_style),
-#     html.Div(id='fileInfo',style=stl.show_data_style),
-#     html.Div(id="show_data",style=stl.show_data_style),
-#     html.Div(
-#         id="data_print",
-#         children=[
-#             dcc.Upload(
-#                 id= "file_uploaded",
-#                 children=[
-#                     html.Div([
-#                         # "Drag and Drop or ",
-#                         html.Button('Select File')
-#                     ])
-#                 ],
-#                 style=stl.uploader_style,
-#                 multiple=False
-#             )
-#         ]),
-#     html.Div(id='dropDown',style=stl.dropDownDivStyle),
-#     # html.Div(id='buttonSection',style=stl.btnStyle),
-#     html.Div(id='finalChart',style=stl.finalChartStyle),
-#     html.Div(id="chart_update",style=stl.chart_update_style),
-#
-#     html.Div(children=[
-#         html.Button(
-#             id= 'btn_bar',
-#             # n_clicks='0',
-#             children=[
-#             dcc.Graph(
-#                 figure=sc.barChart(sc.df,200,200,'x', 'y'),
-#                 responsive=False,
-#
-#         )],
-#             style=stl.sgraph_btn
-#         ),
-#         html.Button(
-#             id= 'btn_line',
-#             # n_clicks='0',
-#             n_clicks_timestamp='-1',
-#             children=[
-#             dcc.Graph(
-#                 id='chart_btn',
-#                 figure=sc.lineChart(sc.df,200,200,'x', 'y'),
-#         )],
-#
-#             style=stl.sgraph_btn
-#         ),
-#         html.Button(
-#             id= 'btn_area',
-#             # n_clicks='0',
-#             children=[
-#             dcc.Graph(
-#                 figure=sc.areaChart(sc.df,200,200,'x', 'y')
-#         )],
-#             style=stl.sgraph_btn
-#         ),
-#         html.Button(
-#             id= 'btn_box',
-#             # n_clicks='0',
-#             children=[
-#             dcc.Graph(
-#                 figure=sc.boxChart(sc.df,200,200,'x', 'y')
-#         )],
-#             style=stl.sgraph_btn
-#         ),
-#         html.Button(
-#             id= 'btn_funnel',
-#             # n_clicks='0',
-#             children=[
-#             dcc.Graph(
-#                 figure=sc.funnelChart(sc.df,200,200,'x', 'y')
-#         )],
-#             style=stl.sgraph_btn
-#         ),
-#         html.Button(
-#             id= 'btn_scatter',
-#             # n_clicks='0',
-#             children=[
-#             dcc.Graph(
-#                 figure=sc.scatterChart(sc.df,200,200,'x', 'y')
-#         )],
-#             style=stl.sgraph_btn
-#         ),
-#     ],
-#     style=stl.sample_chart_style
-#     ),
-#
-#     html.Div(children=[
-#         html.Button(
-#             id='line3D',
-#             # n_clicks='0',
-#             children=[
-#                 dcc.Graph(
-#                     figure=sc.line3DChart(sc.df,200, 200,'x', 'y','z'),
-#                     responsive=False,
-#
-#                 )],
-#             style=stl.sgraph_btn
-#         ),
-#         html.Button(
-#             id='histogram',
-#             # n_clicks='0',
-#             children=[
-#                 dcc.Graph(
-#                     figure=sc.histogramChart(sc.df,200, 200,'x', 'y'),
-#                 )],
-#
-#             style=stl.sgraph_btn
-#         ),
-#         html.Button(
-#             id= 'pie',
-#             # n_clicks='0',
-#             children=[
-#                 dcc.Graph(
-#                     figure=sc.pieChart(sc.df,200, 200, 'y')
-#                 )],
-#             style=stl.sgraph_btn
-#         ),
-#         html.Button(
-#             id='scatter3D',
-#             # n_clicks='0',
-#             children=[
-#                 dcc.Graph(
-#                     figure=sc.scatter3DChart(sc.df, 200, 200,'x', 'y', 'z')
-#                 )],
-#             style=stl.sgraph_btn
-#         ),
-#         html.Button(
-#             id='heatmap',
-#             # n_clicks='0',
-#             children=[
-#                 dcc.Graph(
-#                     figure=sc.heatmapChart(sc.df, 200, 200, 'x', 'y', 'z')
-#                 )],
-#             style=stl.sgraph_btn
-#         ),
-#     ],
-#         style=stl.sample_chart_style
-#     ),
-#     html.Div([
-#         html.Br(),
-#         html.Br(),
-#         html.Br(),
-#         "Tribe - H"
-#     ],
-#     style={'color': 'RGB(164, 168, 176)'},),
-#     html.Div(id='dataTale'),
-# ],
+
 
 
 upld = [
@@ -214,7 +84,8 @@ html.Div(id="show_data",style=stl.show_data_style),
                 id= "file_uploaded",
                 children=[
                     html.Div([
-                        # "Drag and Drop or ",
+                        "Drag and Drop or ",
+                        html.Br(),
                         html.Button('Select File')
                     ])
                 ],
@@ -348,13 +219,16 @@ html.Div(id='dataTale'),
 
 @app.callback(Output('abc','children'),
               Output('frontButton','children'),
+              Output('frontButton','style'),
+              Output('frontPageDetails','children'),
               Input('frontButton','n_clicks'),
               prevent_initial_call=True)
 def update_front(n_click) :
     ctx = dash.callback_context
     ids = ctx.triggered[0]['prop_id'].split('.')[0]
     if 'frontButton' in ids:
-        return upld,"Reset"
+        help.setFile(None)
+        return upld,"Reset",stl.nxt_button_Style2,[],
 
 
 
